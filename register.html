@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!--header section start -->
+<header class="header">
+    <section class="flex">
+        <a href="home.html" class="logo"><i class="fas fa-briefcase"></i> OPPORTUNITY.</a>
+        <nav class="navbar">
+            <a href="home.html">home</a>
+            <a href="about.html">about us</a>
+            <a href="jobs.html">jobs here</a>
+            <a href="contact.html">contact here</a>
+            <a href="login.html" id="loginLink">login here</a>
+            <a href="#" id="profileLink" >profile</a> <!--class="hidden"-->
+        </nav>
+    </section>
+</header>
+<!--header section ends -->
+
+<!-- account section starts -->
+<div class="account-form-container">
+    <section class="account-form">
+        <form id="registerForm">
+            <h3>Create New Account!</h3>
+            <input type="text" id="name" required maxlength="20" placeholder="Enter your name" class="input">
+            <input type="email" id="email" required maxlength="50" placeholder="Enter your email" class="input">
+            <input type="password" id="password" required maxlength="20" placeholder="Enter your password" class="input">
+            <input type="password" id="confirmPassword" required maxlength="20" placeholder="Confirm your password" class="input">
+            <p>already have an account? <a href="login.html">login now</a></p>
+            <input type="submit" value="register now" class="btn">
+        </form>
+    </section>
+</div>
+<!-- account section ends -->
+
+<script>
+    const registerForm = document.getElementById('registerForm');
+
+    registerForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Fetch input values
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        // Check for matching passwords
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            return;
+        }
+
+        // Store user details in localStorage
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userPassword', password);
+
+        alert('Registration Successful! Please login.');
+        window.location.href = 'login.html';
+    });
+</script>
+</body>
+</html>
